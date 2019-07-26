@@ -36,7 +36,7 @@ module.exports = (router) => {
         return router[method]("/", routeMiddleware);
     }
 
-    for(let method in supportedMethods) {
+    for(let method of supportedMethods) {
         this[method] = route.bind(this, method);
     }
 
