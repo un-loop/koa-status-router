@@ -1,0 +1,28 @@
+{
+  "name": "koa-status-router",
+  "version": "1.0.0",
+  "description": "koa router for status codes, does routing to middleware upon upstream processing after status codes are set. Good for error pages routing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/un-loop/koa-status-router.git"
+  },
+  "keywords": [
+    "koa",
+    "router",
+    "status"
+  ],
+  "author": "Michael Armes (michael@un-loop.org)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/un-loop/koa-status-router/issues"
+  },
+  "homepage": "https://github.com/un-loop/koa-status-router#readme",
+  "dependencies": {
+    "koa-compose": "^4.1.0",
+    "koa-router": "^7.4.0"
+  }
+}
