@@ -1,6 +1,6 @@
 {
   "name": "koa-status-router",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "koa router for status codes, does routing to middleware upon upstream processing after status codes are set. Good for error pages routing",
   "main": "index.js",
   "scripts": {

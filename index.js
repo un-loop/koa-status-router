@@ -15,30 +15,34 @@ const supportedMethods = [
     "all"
 ];
 
-module.exports = (router) => {
+module.exports = function(router) {
     router = router || new Router();
 
     const route = (method, status, ...middleware) => {
 
-        const composed = compose(...middleware);
+        const composed = compose(middleware);
         const routeMiddleware  = async (ctx, next) => {
-            await next();
+            try {
+                await next();
+            } catch(ex) {
+                ctx.status = 500;
+            } finally {
+                const finished = () => {};
 
-            const finished = () => {};
-
-            if (ctx.status === status) {
-                await composed(ctx, finished);
-            } else {
-                finished();
+                if (ctx.status === status) {
+                    await composed(ctx, finished);
+                } else {
+                    finished();
+                }
             }
         }
-        
-        return router[method]("/", routeMiddleware);
+
+        return router[method]("*", routeMiddleware);
     }
 
     for(let method of supportedMethods) {
         this[method] = route.bind(this, method);
     }
 
-    this.middleware = router.middleware;
+    this.middleware = router.middleware.bind(router);
 }
